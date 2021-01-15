@@ -1,0 +1,49 @@
+ 
+ class KcircleSum{
+	 
+		public static void main(String [] args){
+			
+
+			
+			int k = 2;
+			int arr[] = {6,4,3,2,1};
+			int n = arr.length;
+			int r = 0;
+			int w = 0;
+			if(k==1){
+				for(int i:arr){
+				System.out.print(i+" ");
+				}
+				return;
+			}
+			int temp[] = new int[arr.length];
+			int pos = 0;
+			while(r<n){
+				w = r;
+				if(r+k>n){
+					pos = w;
+					break;
+				}
+				while(w<k+r && r+k<=n){
+					temp[r]+=arr[w];	
+					w++;
+				}	
+				r++;
+			}
+			while(pos<n){
+				int dif = k-(n-pos);
+				
+				for(int p1=pos;p1<=n-1;p1++){
+					temp[pos]+=arr[p1];
+				}
+				for(int p2=0;p2<dif;p2++){
+					temp[pos]+=arr[p2];
+				}
+				pos++;
+			}
+			
+			for(int i:temp){
+				System.out.print(i+" ");
+			}
+		}
+ }
