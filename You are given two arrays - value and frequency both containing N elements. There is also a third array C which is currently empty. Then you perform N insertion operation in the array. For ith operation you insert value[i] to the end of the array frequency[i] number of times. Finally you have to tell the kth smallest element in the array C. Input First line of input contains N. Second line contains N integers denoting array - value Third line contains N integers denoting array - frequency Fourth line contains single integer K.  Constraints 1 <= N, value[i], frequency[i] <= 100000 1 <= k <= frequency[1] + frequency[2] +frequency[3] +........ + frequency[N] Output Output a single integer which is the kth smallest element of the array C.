@@ -1,0 +1,42 @@
+import java.util.*;
+class FindMinimum{
+	
+	public static void main(String [] args){
+		
+		Scanner sc = new Scanner(System.in);
+		int size = sc.nextInt();
+		int val[] = new int[size];
+		int fre[] = new int[size];
+		
+		for(int i=0;i<size;i++) val[i]=sc.nextInt();
+		for(int i=0;i<size;i++) fre[i]=sc.nextInt();
+		int kth = sc.nextInt();
+		int outValue = 0;
+		
+		while(kth>0){
+			
+			int min = Integer.MAX_VALUE;
+			int min_index = 0;
+			
+			for(int i=0;i<size;i++){
+				if(val[i]<min && val[i]>0){
+					min = val[i];
+					min_index = i;	
+				}
+			}
+			kth = kth-fre[min_index];
+			outValue = val[min_index];
+			if(kth>0){
+				val[min_index] = -1;
+			}
+			
+		}
+		
+		System.out.print(outValue);
+		
+	}
+	
+	
+	
+	
+}
