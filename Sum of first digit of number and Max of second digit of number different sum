@@ -1,0 +1,47 @@
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    int n2 = sc.nextInt();
+	    int n3 = sc.nextInt();
+	    
+	    int firstMax1 = firstMaxDigit(n1);
+	    int firstMax2 = firstMaxDigit(n2);
+	    int firstMax3 = firstMaxDigit(n3);
+	    
+	    
+	    int secondMax1 = secondMaxDigit(n1,firstMax1);
+	    int secondMax2 = secondMaxDigit(n2,firstMax2);
+	    int secondMax3 = secondMaxDigit(n3,firstMax3);
+	    
+	    System.out.println((firstMax1+firstMax2+firstMax3)-(secondMax1+secondMax2+secondMax3));
+	    
+	}
+	
+	public static int firstMaxDigit(int n){
+	    int max = Integer.MIN_VALUE;
+	    while(n>0){
+	        int temp = n%10;
+	        if (temp>max){
+	            max = temp;
+	        } 
+	        n = n/10;
+	    }
+	    return max;
+	}
+	
+	public static int secondMaxDigit(int n,int firstMax){
+	    int max = Integer.MIN_VALUE;
+	    while(n>0){
+	        int temp = n%10;
+	        if (temp>max && temp<firstMax){
+	            max = temp;
+	        } 
+	        n = n/10;
+	    }
+	    return max;
+	}
+}
